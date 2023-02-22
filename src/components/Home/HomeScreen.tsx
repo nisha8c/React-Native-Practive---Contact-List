@@ -1,9 +1,7 @@
-import {Button, View, Text, SafeAreaView, FlatList, ScrollView, StyleSheet} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import customers from "../../../server/customers";
+import {Button, View, Text, SafeAreaView, FlatList, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import {CustomerData} from "../../../types/types";
 import React, {useEffect, useState} from "react";
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
 
     const [list, setList] = useState<CustomerData[]>([]);
 
@@ -15,18 +13,35 @@ const HomeScreen = () => {
         };
         getData();
     }, [list]);
+
+    const displayCustomerInfo = (customer: CustomerData) => {
+        console.log('displayCustomerInfo...', customer.name);
+        return(
+            <View>
+                <Text>testing</Text>
+            </View>
+        );
+    };
+
     return (
         <SafeAreaView>
             <ScrollView>
                 {
                     list.map((item, index) => {
                         return(
-                            <View style={styles.item_info} key={index}>
+                            <TouchableOpacity style={styles.item_info} key={index} onPress={() => displayCustomerInfo(item)}>
                                 <View>
-                                    <Text style={styles.txt_name}>{item.name.title} {item.name.first} {item.name.last}</Text>
-                                    <Text style={styles.txt_item}>{item.dob.date} {item.dob.age}</Text>
+                                    <Text style={styles.txt_name}>
+                                        {item.name.title} {item.name.first} {item.name.last}
+                                    </Text>
+                                    <Text style={styles.txt_item}>
+                                        Birthdate: {item.dob.date}
+                                    </Text>
+                                    <Text style={styles.txt_item}>
+                                        Age: {item.dob.age}
+                                    </Text>
                                 </View>
-                            </View>
+                            </TouchableOpacity>
                         );
                     })
                 }
@@ -52,23 +67,5 @@ const styles = StyleSheet.create({
         flexDirection : "row",
         justifyContent:"space-between"
     },
-    scrollView: {
-        height: '20%',
-        width: '80%',
-        margin: 20,
-        alignSelf: 'center',
-        padding: 20,
-        borderWidth: 5,
-        borderRadius: 5,
-        borderColor: 'black',
-        backgroundColor: 'lightblue'
-    },
-    contentContainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'lightgrey',
-        paddingBottom: 50
-    }
-
 });
 export default HomeScreen;
