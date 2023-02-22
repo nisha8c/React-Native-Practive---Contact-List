@@ -97,6 +97,8 @@ const addCustomer = (req: Request, res: Response) => {
         });
 };
 
+
+
 app.get('/', (req: Request, res: Response) => {
     res.status(200).json({test: 'is working as it should'});
 });
@@ -105,6 +107,7 @@ app.get('/api/customers', getAllCustomersInformation);
 app.get('/api/customers/:id', getCustomerById);
 app.delete('/api/customers/:id', deleteCustomer);
 app.post('/api/customers', addCustomer);
+
 
 
 export default app;
