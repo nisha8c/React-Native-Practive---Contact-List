@@ -97,7 +97,7 @@ const addCustomer = (req: Request, res: Response) => {
         });
 };
 
-
+// Update needs to be added
 
 app.get('/', (req: Request, res: Response) => {
     res.status(200).json({test: 'is working as it should'});

@@ -9,13 +9,9 @@ server runs on port 8000
 ## CLIENT:
 npm start
 
-## StackNavigator is as below
-![Simulator Screen Shot - iPhone SE (3rd generation) - 2023-02-21 at 14.34.22.png](..%2F..%2FDesktop%2FSimulator%20Screen%20Shot%20-%20iPhone%20SE%20%283rd%20generation%29%20-%202023-02-21%20at%2014.34.22.png)
-![Simulator Screen Shot - iPhone SE (3rd generation) - 2023-02-21 at 14.37.53.png](..%2F..%2FDesktop%2FSimulator%20Screen%20Shot%20-%20iPhone%20SE%20%283rd%20generation%29%20-%202023-02-21%20at%2014.37.53.png)
-
-## TabNavigator is as below
-![Simulator Screen Shot - iPhone SE (3rd generation) - 2023-02-21 at 14.37.25.png](..%2F..%2FDesktop%2FSimulator%20Screen%20Shot%20-%20iPhone%20SE%20%283rd%20generation%29%20-%202023-02-21%20at%2014.37.25.png)
-![Simulator Screen Shot - iPhone SE (3rd generation) - 2023-02-21 at 14.37.31.png](..%2F..%2FDesktop%2FSimulator%20Screen%20Shot%20-%20iPhone%20SE%20%283rd%20generation%29%20-%202023-02-21%20at%2014.37.31.png)
+## Screenshots:
+![Simulator Screen Shot - iPhone SE (3rd generation) - 2023-02-23 at 12.27.24.png](assets%2FSimulator%20Screen%20Shot%20-%20iPhone%20SE%20%283rd%20generation%29%20-%202023-02-23%20at%2012.27.24.png)
+![Simulator Screen Shot - iPhone SE (3rd generation) - 2023-02-23 at 12.27.34.png](assets%2FSimulator%20Screen%20Shot%20-%20iPhone%20SE%20%283rd%20generation%29%20-%202023-02-23%20at%2012.27.34.png)
 
 ## A. Scenario
 The Customer Relationship System at your company is an old beast designed to work on Internet Explorer 6. Your sales rep heard that there are people that knows how to build phone applications and swings by you over lunch:

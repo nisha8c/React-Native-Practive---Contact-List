@@ -1,6 +1,6 @@
 import {View, Text, Button} from "react-native";
 
-const AboutScreen = ({ navigation }) => {
+const AboutScreen = () => {
     return (
         <View>
             <Text>About screen</Text>
