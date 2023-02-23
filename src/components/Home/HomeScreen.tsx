@@ -1,9 +1,7 @@
 import {
-    Button,
     View,
     Text,
     SafeAreaView,
-    FlatList,
     ScrollView,
     StyleSheet,
     TouchableOpacity,
@@ -11,8 +9,8 @@ import {
 } from 'react-native';
 import {CustomerData} from "../../../types/types";
 import React, {useEffect, useState} from "react";
-import {SearchBar} from "react-native-elements";
-const HomeScreen = ({ navigation }) => {
+
+const HomeScreen = () => {
 
     const [list, setList] = useState<CustomerData[]>([]);
     const [visible, setVisible] = useState(false);
@@ -203,7 +201,6 @@ const styles = StyleSheet.create({
     },
     form:{
         padding : 15,
-        // backgroundColor : "#e3e3e3",
         marginTop:10
     },
     txtClose:{
