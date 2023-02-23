@@ -7,7 +7,7 @@ import {
     ScrollView,
     StyleSheet,
     TouchableOpacity,
-    Modal
+    Modal, Image
 } from 'react-native';
 import {CustomerData} from "../../../types/types";
 import React, {useEffect, useState} from "react";
@@ -16,6 +16,8 @@ const HomeScreen = ({ navigation }) => {
 
     const [list, setList] = useState<CustomerData[]>([]);
     const [visible, setVisible] = useState(false);
+    const [showDetailsModalVisible, setShowDetailsModalVisible] = useState(false);
+    const [customer, setCustomer] = useState<CustomerData | null>();
 
     useEffect(() => {
         const getData = async () => {
@@ -26,9 +28,10 @@ const HomeScreen = ({ navigation }) => {
         getData();
     }, [list]);
 
-    const displayCustomerInfo = (customer: CustomerData) => {
-        console.log('displayCustomerInfo...', customer.name);
-        // navigation.navigate('IndividualContactScreen');
+    const handleDisplayCustomerInfo = (customerInfo: CustomerData | null) => {
+        console.log('handleDisplayCustomerInfo...');
+        setShowDetailsModalVisible(!showDetailsModalVisible);
+        setCustomer(customerInfo);
     };
 
     const deleteCustomer = async (customer: CustomerData) => {
@@ -67,17 +70,61 @@ const HomeScreen = ({ navigation }) => {
                 visible={visible}
             >
                 <SafeAreaView>
-                    <View>
-                        <Text>Form will be here</Text>
+                    <View style={styles.form}>
+                        <TouchableOpacity onPress={handleVisibleModal}>
+                            <Text style={styles.txtClose}>
+                                Close
+                            </Text>
+                        </TouchableOpacity>
+
+
                     </View>
                 </SafeAreaView>
+            </Modal>
+
+            <Modal
+                animationType="slide"
+                visible={showDetailsModalVisible}
+            >
+                <TouchableOpacity onPress={() => handleDisplayCustomerInfo(null)}>
+                    <Text style={styles.txtClose}>
+                        Close
+                    </Text>
+
+                    <Image
+                        style={{ width: 250, height: 250 }}
+                        resizeMode='contain'
+                        source={{
+                        uri: customer?.picture.medium,
+                        }}
+
+                    />
+                    <Text>Name: {customer?.name.title.toString()} {customer?.name.first.toString()} {customer?.name.last.toString()}</Text>
+                    <Text>Gender: {customer?.gender}</Text>
+                    <Text>Location: {customer?.location.street.number},
+                        {customer?.location.street.name}
+                        {customer?.location.city}
+                        {customer?.location.state}
+                        {customer?.location.country}
+                        {customer?.location.postcode}
+                        {customer?.location.coordinates.longitude}
+                        {customer?.location.coordinates.latitude}
+                        {customer?.location.timezone.offset}, {customer?.location.timezone.description}
+                    </Text>
+                    <Text>Email: {customer?.email}</Text>
+                    <Text>Date of Birth: {customer?.dob.date}</Text>
+                    <Text>Age: {customer?.dob.age}</Text>
+                    <Text>Phone: {customer?.phone}</Text>
+                    <Text>Cell: {customer?.cell}</Text>
+                    <Text>Nationality: {customer?.nat}</Text>
+                </TouchableOpacity>
             </Modal>
 
             <ScrollView>
                 {
                     list.map((item, index) => {
                         return(
-                            <TouchableOpacity style={styles.item_info} key={index} onPress={() => displayCustomerInfo(item)}>
+                            <TouchableOpacity style={styles.item_info} key={index} onPress={() => handleDisplayCustomerInfo(item)}>
                                 <View>
                                     <Text style={styles.txt_name}>
                                         {item.name.title} {item.name.first} {item.name.last}
@@ -150,6 +197,29 @@ const styles = StyleSheet.create({
     txt_main : {
         fontSize : 22,
         fontWeight : "bold"
+    },
+    form:{
+        padding : 15,
+        // backgroundColor : "#e3e3e3",
+        marginTop:10
+    },
+    txtClose:{
+        fontSize:18,
+        fontWeight : "bold",
+        marginVertical : 10,
+        textAlign : "right"
+    },
+    text_input:{
+        padding :10,
+        borderWidth :1,
+        borderColor : "gray",
+        borderRadius : 10,
+        marginTop :10
+    },
+    img_container:{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
     },
 });
 export default HomeScreen;
