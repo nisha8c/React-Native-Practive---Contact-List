@@ -2,8 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { createNativeStackNavigator } from "react-native-screens/native-stack";
-const Stack  = createNativeStackNavigator();
+//import { createNativeStackNavigator } from "react-native-screens/native-stack";
+//const Stack  = createNativeStackNavigator();
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
@@ -14,7 +14,8 @@ const Tab = createBottomTabNavigator();
 import {
   AboutScreen,
   HomeScreen,
-  SearchScreen
+  SearchScreen,
+  IndividualContactScreen
 } from "./src/components";
 
 export default function App() {
