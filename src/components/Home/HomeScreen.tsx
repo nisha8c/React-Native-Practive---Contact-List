@@ -29,13 +29,11 @@ const HomeScreen = ({ navigation }) => {
     }, [list]);
 
     const handleDisplayCustomerInfo = (customerInfo: CustomerData | null) => {
-        console.log('handleDisplayCustomerInfo...');
         setShowDetailsModalVisible(!showDetailsModalVisible);
         setCustomer(customerInfo);
     };
 
     const deleteCustomer = async (customer: CustomerData) => {
-        console.log('deleteCustomer...');
         const customerId = customer.id.value;
         await fetch("http://localhost:8000/api/customers/"+ customerId, { method: "DELETE" })
             .then(response => {  console.log(response.status); });
@@ -86,38 +84,43 @@ const HomeScreen = ({ navigation }) => {
                 animationType="slide"
                 visible={showDetailsModalVisible}
             >
-                <TouchableOpacity onPress={() => handleDisplayCustomerInfo(null)}>
-                    <Text style={styles.txtClose}>
-                        Close
-                    </Text>
+                <SafeAreaView style={styles.info_container}>
+                    <TouchableOpacity
+                        onPress={() => handleDisplayCustomerInfo(null)}
+                    >
+                        <Text style={styles.txtClose}>
+                            Close
+                        </Text>
 
-                    <Image
-                        style={{ width: 250, height: 250 }}
-                        resizeMode='contain'
-                        source={{
-                        uri: customer?.picture.medium,
-                        }}
+                        <Image
+                            style={{ width: 250, height: 250 }}
+                            resizeMode='contain'
+                            source={{
+                                uri: customer?.picture.medium,
+                            }}
 
-                    />
-                    <Text>Name: {customer?.name.title.toString()} {customer?.name.first.toString()} {customer?.name.last.toString()}</Text>
-                    <Text>Gender: {customer?.gender}</Text>
-                    <Text>Location: {customer?.location.street.number},
-                        {customer?.location.street.name}
-                        {customer?.location.city}
-                        {customer?.location.state}
-                        {customer?.location.country}
-                        {customer?.location.postcode}
-                        {customer?.location.coordinates.longitude}
-                        {customer?.location.coordinates.latitude}
-                        {customer?.location.timezone.offset}, {customer?.location.timezone.description}
-                    </Text>
-                    <Text>Email: {customer?.email}</Text>
-                    <Text>Date of Birth: {customer?.dob.date}</Text>
-                    <Text>Age: {customer?.dob.age}</Text>
-                    <Text>Phone: {customer?.phone}</Text>
-                    <Text>Cell: {customer?.cell}</Text>
-                    <Text>Nationality: {customer?.nat}</Text>
-                </TouchableOpacity>
+                        />
+                        <Text>Name: {customer?.name.title.toString()} {customer?.name.first.toString()} {customer?.name.last.toString()}</Text>
+                        <Text>Gender: {customer?.gender}</Text>
+                        <Text>Location: {customer?.location.street.number},
+                            {customer?.location.street.name}
+                            {customer?.location.city}
+                            {customer?.location.state}
+                            {customer?.location.country}
+                            {customer?.location.postcode}
+                            {customer?.location.coordinates.longitude}
+                            {customer?.location.coordinates.latitude}
+                            {customer?.location.timezone.offset}, {customer?.location.timezone.description}
+                        </Text>
+                        <Text>Email: {customer?.email}</Text>
+                        <Text>Date of Birth: {customer?.dob.date}</Text>
+                        <Text>Age: {customer?.dob.age}</Text>
+                        <Text>Phone: {customer?.phone}</Text>
+                        <Text>Cell: {customer?.cell}</Text>
+                        <Text>Nationality: {customer?.nat}</Text>
+                    </TouchableOpacity>
+                </SafeAreaView>
+
             </Modal>
 
             <ScrollView>
@@ -216,8 +219,9 @@ const styles = StyleSheet.create({
         borderRadius : 10,
         marginTop :10
     },
-    img_container:{
+    info_container:{
         flex: 1,
+        margin: 2,
         alignItems: "center",
         justifyContent: "center"
     },
