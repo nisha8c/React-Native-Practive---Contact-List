@@ -1,5 +1,14 @@
 import {SafeAreaView, Text, TextInput, StyleSheet, View, ScrollView, TouchableOpacity, Button, Alert} from "react-native";
-import { CustomerData } from "../../types/types";
+import {
+    CoordinatesData,
+    CustomerData,
+    DobRegData,
+    IdData,
+    LocationData,
+    NameData,
+    PictureData,
+    StreetData, TimezoneData
+} from "../../types/types";
 import {useForm, Controller, SubmitErrorHandler} from "react-hook-form";
 import React, {useState} from "react";
 
@@ -9,9 +18,51 @@ const AddNewCustomer = () => {
 
     const { control, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
-            title:'',
-            firstName: '',
-            lastName: ''
+            gender: '',
+            name: {
+                title: '',
+                first: '',
+                last: ''
+            },
+            location: {
+                street: {
+                    number: 0,
+                    name: ''
+                },
+                city: '',
+                state: '',
+                country: '',
+                postcode: '',
+                coordinates: {
+                    latitude: '',
+                    longitude: ''
+                },
+                timezone: {
+                    offset: '',
+                    description: ''
+                }
+            },
+            email: '',
+            dob: {
+                date:  '',
+                age: 0
+            },
+            registered: {
+                date:  '',
+                age: 0
+            },
+            phone: '',
+            cell: '',
+            id: {
+                name: '',
+                value: 0,
+            },
+            picture: {
+                large: '',
+                medium: '',
+                thumbnail: '',
+            },
+            nat: ''
         }
     });
     const onSubmit = data => console.log(data);
@@ -41,9 +92,12 @@ const AddNewCustomer = () => {
                                 value={value}
                             />
                         )}
-                        name="title"
+                        name="name.title"
                     />
-                    {errors.title && <Text>This is required.</Text>}
+                    {/*
+                        errors.lastName && <Text>This is required.</Text>
+                        */
+                    }
 
                     <Controller
                         control={control}
@@ -59,9 +113,9 @@ const AddNewCustomer = () => {
                                 value={value}
                             />
                         )}
-                        name="firstName"
+                        name="name.first"
                     />
-                    {errors.firstName && <Text>This is required.</Text>}
+
 
                     <Controller
                         control={control}
@@ -77,9 +131,9 @@ const AddNewCustomer = () => {
                                 value={value}
                             />
                         )}
-                        name="lastName"
+                        name="name.last"
                     />
-                    {errors.lastName && <Text>This is required.</Text>}
+
 
                     <Button title="Submit" onPress={handleSubmit(onSubmit)} />
                 </ScrollView>
