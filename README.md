@@ -4,7 +4,7 @@
 
 ## SERVER:
 npm run serve
-server runs on port 8000
+server runs on port 8080
 
 ## CLIENT:
 npm start
@@ -13,6 +13,21 @@ npm start
 ![Simulator Screen Shot - iPhone SE (3rd generation) - 2023-02-23 at 12.27.24.png](assets%2FSimulator%20Screen%20Shot%20-%20iPhone%20SE%20%283rd%20generation%29%20-%202023-02-23%20at%2012.27.24.png)
 ![Simulator Screen Shot - iPhone SE (3rd generation) - 2023-02-23 at 12.27.34.png](assets%2FSimulator%20Screen%20Shot%20-%20iPhone%20SE%20%283rd%20generation%29%20-%202023-02-23%20at%2012.27.34.png)
 ![Simulator Screen Shot - iPhone SE (3rd generation) - 2023-02-24 at 14.14.46.png](assets%2FSimulator%20Screen%20Shot%20-%20iPhone%20SE%20%283rd%20generation%29%20-%202023-02-24%20at%2014.14.46.png)
+
+
+## App is capable of:
+
+### At Server side:
+1. Database is an array od Customers. (some customers do not have id mentioned for now)
+2. Get all, get by ID, delete by id and add new.
+
+### At Client end:
+1. Displays all customers (ScrollView does not scroll for some reason. Need to check)
+2. Displays individual customer in a modal screen.
+3. Add form to add new customer. (Not having all the fields in the form for now)
+4. Tab Navigator is used
+
+
 ## A. Scenario
 The Customer Relationship System at your company is an old beast designed to work on Internet Explorer 6. Your sales rep heard that there are people that knows how to build phone applications and swings by you over lunch:
 
