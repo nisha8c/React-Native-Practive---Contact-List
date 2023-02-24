@@ -5,10 +5,11 @@ import {
     ScrollView,
     StyleSheet,
     TouchableOpacity,
-    Modal, Image
+    Modal, Image, TextInput
 } from 'react-native';
 import {CustomerData} from "../../../types/types";
 import React, {useEffect, useState} from "react";
+import {AddNewCustomer} from "../index";
 
 const HomeScreen = () => {
 
@@ -19,7 +20,7 @@ const HomeScreen = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const response = await fetch ('http://localhost:8000/api/customers');
+            const response = await fetch ('http://localhost:8080/api/customers');
             const data = await response.json();
             setList(data);
         };
@@ -33,7 +34,7 @@ const HomeScreen = () => {
 
     const deleteCustomer = async (customer: CustomerData) => {
         const customerId = customer.id.value;
-        await fetch("http://localhost:8000/api/customers/"+ customerId, { method: "DELETE" })
+        await fetch("http://localhost:8080/api/customers/"+ customerId, { method: "DELETE" })
             .then(response => {  console.log(response.status); });
 
     };
@@ -73,7 +74,7 @@ const HomeScreen = () => {
                             </Text>
                         </TouchableOpacity>
 
-
+                        <AddNewCustomer />
                     </View>
                 </SafeAreaView>
             </Modal>
@@ -98,7 +99,9 @@ const HomeScreen = () => {
                             }}
 
                         />
-                        <Text>Name: {customer?.name.title.toString()} {customer?.name.first.toString()} {customer?.name.last.toString()}</Text>
+                        <Text style={styles.txt_name}>
+                            {customer?.name.title.toString()} {customer?.name.first.toString()} {customer?.name.last.toString()}
+                        </Text>
                         <Text>Gender: {customer?.gender}</Text>
                         <Text>Location: {customer?.location.street.number},
                             {customer?.location.street.name}
@@ -121,7 +124,7 @@ const HomeScreen = () => {
 
             </Modal>
 
-            <ScrollView>
+            <ScrollView contentContainerStyle={{  }}>
                 {
                     list.map((item, index) => {
                         return(
@@ -198,10 +201,6 @@ const styles = StyleSheet.create({
     txt_main : {
         fontSize : 22,
         fontWeight : "bold"
-    },
-    form:{
-        padding : 15,
-        marginTop:10
     },
     txtClose:{
         fontSize:18,
