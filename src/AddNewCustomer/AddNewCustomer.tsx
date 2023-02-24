@@ -65,7 +65,16 @@ const AddNewCustomer = () => {
             nat: ''
         }
     });
-    const onSubmit = data => console.log(data);
+    const onSubmit = (data: CustomerData) => {
+        console.log(JSON.stringify(data));
+
+        fetch('http://localhost:8080/api/customers/', {
+            method : 'POST',
+            headers : { 'Content-Type': 'application/json' },
+            body : JSON.stringify(data)
+        });
+
+    }
 
     return(
         <SafeAreaView>
@@ -132,6 +141,23 @@ const AddNewCustomer = () => {
                             />
                         )}
                         name="name.last"
+                    />
+
+                    <Controller
+                        control={control}
+                        rules={{
+                            maxLength: 100,
+                        }}
+                        render={({ field: { onChange, onBlur, value } }) => (
+                            <TextInput
+                                placeholder={'Gender: Male / Female / Prefer not to say'}
+                                style={styles.text_input}
+                                onBlur={onBlur}
+                                onChangeText={onChange}
+                                value={value}
+                            />
+                        )}
+                        name="gender"
                     />
 
 
