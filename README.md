@@ -12,7 +12,7 @@ npm start
 ## Screenshots:
 ![Simulator Screen Shot - iPhone SE (3rd generation) - 2023-02-23 at 12.27.24.png](assets%2FSimulator%20Screen%20Shot%20-%20iPhone%20SE%20%283rd%20generation%29%20-%202023-02-23%20at%2012.27.24.png)
 ![Simulator Screen Shot - iPhone SE (3rd generation) - 2023-02-23 at 12.27.34.png](assets%2FSimulator%20Screen%20Shot%20-%20iPhone%20SE%20%283rd%20generation%29%20-%202023-02-23%20at%2012.27.34.png)
-
+![Simulator Screen Shot - iPhone SE (3rd generation) - 2023-02-24 at 14.14.46.png](assets%2FSimulator%20Screen%20Shot%20-%20iPhone%20SE%20%283rd%20generation%29%20-%202023-02-24%20at%2014.14.46.png)
 ## A. Scenario
 The Customer Relationship System at your company is an old beast designed to work on Internet Explorer 6. Your sales rep heard that there are people that knows how to build phone applications and swings by you over lunch:
 
